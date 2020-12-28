@@ -3,18 +3,10 @@ import { postcss } from '@stencil/postcss';
 import autoprefixer from 'autoprefixer';
 import tailwindcss from 'tailwindcss';
 
-const tailwindConfig = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
-  theme: {
-    extend: {},
-  },
-  variants: {},
-  plugins: [],
-};
+
 
 const purgecss = require('@fullhuman/postcss-purgecss')({
-  content: ['./src/components/purged-button/*.tsx', './src/components/purged-button/*.css', './src/index.html'],
+  content: ['./src/components/**/*.tsx', './src/components/**/*.css', './src/index.html'],
   defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
 });
 
@@ -40,16 +32,8 @@ export const config: Config = {
     postcss({
       plugins: [
         autoprefixer(),
-        tailwindcss({
-          purge: [],
-          darkMode: false, // or 'media' or 'class'
-          theme: {
-            extend: {},
-          },
-          variants: {},
-          plugins: [],
-        }),
-        purgecss,
+        tailwindcss({ config: './tailwind.config.js' }),
+        /* purgecss, */
       ],
     }),
   ],

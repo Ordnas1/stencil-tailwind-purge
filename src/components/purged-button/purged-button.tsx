@@ -10,7 +10,7 @@ export class PurgedButton {
   render() {
     return (
       <Host>
-        <button class="rounded bg-purple-200 font-sans px-8 py-4">I am purged</button>
+        <button class="rounded bg-primary-200 font-sans px-8 py-4 text-on-primary-high">I am purged</button>
       </Host>
     );
   }
